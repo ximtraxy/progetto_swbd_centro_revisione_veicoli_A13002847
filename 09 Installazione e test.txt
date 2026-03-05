@@ -1,0 +1,75 @@
+1. REQUISITI DI SISTEMA E PREMESSE
+-----------------------------------------------------------------------------
+Il progetto e' stato sviluppato in puro HTML, CSS, Javascript (inline) e PHP.
+- NON e' stata utilizzata alcuna libreria esterna
+- E' richiesto un server web locale con supporto PHP (es. XAMPP).
+- E' richiesto un database MySQL.
+- Versione PHP consigliata: 8.0 o superiore.
+
+2. INSTALLAZIONE E CONFIGURAZIONE
+-----------------------------------------------------------------------------
+Passo 1: Estrazione dei file
+- Estrarre il contenuto dell'archivio "07 Centro_Revisioni.zip" all'interno
+  della root del server web locale (es. la cartella "htdocs" per XAMPP).
+
+Passo 2: Configurazione del Database
+- Aprire phpMyAdmin (http://localhost/phpmyadmin).
+- Andare nella scheda "Importa".
+- Selezionare il file "Dump Database.sql" fornito nei file di progetto
+  (estrai 05 Dump Database.zip) e cliccare su "Esegui".
+  Questo creera' le tabelle e popolera' il database con i dati di test iniziali.
+
+Passo 3: Connessione al Database
+- Aprire il file PHP che gestisce la connessione al database ("config.php"
+  presente nella cartella del progetto).
+- Verificare che i parametri di connessione corrispondano al proprio ambiente
+  locale. Di default sono impostati su:
+  Host:     localhost
+  User:     root
+  Password: (vuota)
+  Database: centro_revisioni
+
+Passo 4: Inizializzazione delle Password
+- IMPORTANTE: questo passaggio e' necessario ogni volta che si importa
+  il database da zero (es. prima installazione o reset completo).
+- Aprire il browser e digitare:
+  http://localhost/centro_revisioni/aggiorna_password.php
+- La pagina confermera' l'avvenuta inizializzazione con un messaggio verde.
+- Questo script aggiorna le password degli utenti di test applicando
+  la cifratura richiesta dal sistema (bcrypt). Senza questo passaggio
+  il login non funzionera'.
+
+Passo 5: Lancio dell'Applicativo
+- Aprire il browser web e digitare: http://localhost/centro_revisioni
+- Verra' caricata la Pagina Iniziale del sistema.
+
+3. CREDENZIALI DI ACCESSO PREIMPOSTATE PER I TEST
+-----------------------------------------------------------------------------
+Il database importato contiene gia' degli utenti pre-registrati per testare
+i diversi ruoli del sistema. Dal menu' "Login", utilizzare le seguenti
+credenziali (valide dopo aver eseguito il Passo 4):
+
+[Ruolo: CLIENTE]
+E-mail:   cliente1@email.it
+Password: cliente123
+
+[Ruolo: TECNICO]
+E-mail:   tecnico1@centro.it
+Password: tecnico123
+
+[Ruolo: LOGISTA]
+E-mail:   logista1@centro.it
+Password: logista123
+
+[Ruolo: AMMINISTRATORE]
+E-mail:   admin@centro.it
+Password: admin123
+
+4. LANCIO DEI TEST E DEBUGGING
+-----------------------------------------------------------------------------
+Per effettuare il lancio dei test funzionali e il debugging dell'applicativo,
+e' sufficiente utilizzare le credenziali preimpostate fornite al Punto 3.
+Effettuando il login in sequenza con ciascuno dei quattro profili utente,
+sara' possibile esplorare le rispettive aree riservate e testare liberamente
+tutte le funzionalita' di business descritte nel Documento di Progettazione
+(prenotazioni, registrazione esiti, incarichi logistici e reportistica...).
